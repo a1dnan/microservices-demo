@@ -1,5 +1,6 @@
 package com.a1dnan.school.controller;
 
+import com.a1dnan.school.entities.FullSchoolResponse;
 import com.a1dnan.school.entities.School;
 import com.a1dnan.school.service.SchoolService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,12 @@ public class SchoolController {
     }
 
     @GetMapping
-    public ResponseEntity<List<School>> findAllStudents(){
+    public ResponseEntity<List<School>> findAllSchools(){
         return ResponseEntity.ok(service.findAllSchools());
+    }
+
+    @GetMapping("/students/{schoolId}")
+    public ResponseEntity<FullSchoolResponse> findAllSchoolStudents(@PathVariable Integer schoolId){
+        return ResponseEntity.ok(service.findAllSchoolStudents(schoolId));
     }
 }
